@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  worker1:
+    image: map-server
+    ports:
+      - "8081:8080"
+
+  worker2:
+    image: map-server
+    ports:
+      - "8080:8080"

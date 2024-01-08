@@ -18,7 +18,6 @@ public class Configuration {
         if (inputStream != null) {
             Map<String, Object> obj = yaml.load(inputStream);
             if (obj != null) {
-                System.out.println(obj);
                 servers = ((List<Map<String, Object>>) obj.get("servers"))
                         .stream()
                         .map(ServerInfo::new)
@@ -49,6 +48,11 @@ public class Configuration {
 
         public Integer getPort() {
             return port;
+        }
+
+        @Override
+        public String toString() {
+            return host + ":" +port;
         }
     }
 }

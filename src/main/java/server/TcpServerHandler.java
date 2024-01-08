@@ -12,6 +12,12 @@ public class TcpServerHandler extends ChannelInboundHandlerAdapter {
         String message = (String) msg;
         System.out.println("Received: " + message);
         message = message.replace("\n","");
+        if (message.equals("shutdown")){
+            TcpServer.allChannels.writeAndFlush("quit");
+            TcpServer.allChannels.close();
+            ctx.close();
+            return;
+        }
 
         String result = handle(message);
         if (result != null){
@@ -35,4 +41,11 @@ public class TcpServerHandler extends ChannelInboundHandlerAdapter {
         cause.printStackTrace();
         ctx.close();
     }
+
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        super.channelActive(ctx);
+        TcpServer.allChannels.add(ctx.channel());
+    }
+
 }

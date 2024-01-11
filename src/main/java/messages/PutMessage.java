@@ -9,25 +9,7 @@ public class PutMessage extends MessageWithError {
     int key;
     String value;
 
-//    public PutMessage0(String inputString) {//put 1: blah blah
-//        String[] sSplitted = inputString.split("");
-//        if (sSplitted.length != 2){
-//            error = WRONG_PUT_FORMAT;
-//            return;
-//        }
-//        String[] keyValue = sSplitted[1].split(":");
-//        if (keyValue.length != 2) {
-//            error = WRONG_PUT_FORMAT;
-//            return;
-//        }
-//        try {
-//            key = Integer.parseInt(keyValue[0]);
-//            value = keyValue[1].trim();
-//        } catch (NumberFormatException e) {
-//            error = WRONG_PUT_FORMAT;
-//        }
-//    }
-    public PutMessage(String inputString) {//put 1: blah blah
+    public PutMessage(String inputString) {
         String[] sSplitted = inputString.split(":");
         if (sSplitted.length != 2){
             error = WRONG_PUT_FORMAT;

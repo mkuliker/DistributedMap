@@ -91,7 +91,11 @@ public class TcpClient {
     private static Channel getChannel(String message, List<Channel> channels) {
         String[] leftMessage = message.split(":")[0].split(" ");
         if (channels.size() > 1 && leftMessage.length == 2) {
-            int key = Integer.parseInt(leftMessage[1]);
+            int key = 0;
+            try {
+                key = Integer.parseInt(leftMessage[1]);
+            } catch (NumberFormatException ignored) {
+            }
             int number = key % channels.size();
             return channels.get(number);
         } else {
